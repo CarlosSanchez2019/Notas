@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Shows Notes
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        link(rel="stylesheet", href="style.css")
+    body
+        include partials/nav.pug
+
+        .container
+            .row.mt-5
+                each note in notes
+                    .col-4
+                        .card
+                            .card-body
+                                h5.card-title.d-flex.justify-content-between=note.title
+                                    a(href=`/edit/${note._id}`) 
+                                        i.fas.fa-pencil-alt
+                                p.card-text=note.description
+                                a.btn.btn-danger(href=`/delete/${note._id}`) Delete
+
+        script(src="https://code.jquery.com/jquery-3.4.1.slim.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js")
